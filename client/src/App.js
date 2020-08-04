@@ -1,10 +1,10 @@
 import React from 'react';
-import './App.css';
+import Content from './containers/Content';
 
 function App() {
   return (
     <div>
-      
+      <Content />
     </div>
   );
 }
