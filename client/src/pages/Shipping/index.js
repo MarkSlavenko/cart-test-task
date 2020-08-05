@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { Component } from 'react';
+import ShippingForm from '../../components/ShippingForm';
 
-function Shipping() {
-  return (
-    <div className="shipping-page container">
-      <h2>Shipping page</h2>
-    </div>
-  );
+class Shipping extends Component {
+  componentDidMount() {
+
+  }
+
+  render() {
+    return (
+      <div className="shipping-page container">
+        <ShippingForm />
+      </div>
+    );
+  }
 }
 
 export default Shipping;
