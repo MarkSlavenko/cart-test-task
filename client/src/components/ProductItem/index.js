@@ -5,20 +5,25 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import '@fortawesome/fontawesome-svg-core';
 import './productItem.scss';
+import defaultImg from './images/img-error.JPG';
 
 const ProductItem = ({
-  id, img, title, description, count, price, delFunc, changeCountFunc,
+  id, img = defaultImg, title, description, count, price, delFunc, changeCountFunc,
 }) => {
   let smallDescription = '';
   if (description) {
     smallDescription = description.length >= 125 ? `${description.slice(0, 125)}  ...` : description;
   }
 
+  const addDefaultSrc = (e) => {
+    e.target.src = defaultImg;
+  };
+
   return (
     <div className="product-item">
       <div className="inner-div">
         <div className="image-div">
-          <img src={img} alt={title} />
+          <img src={img} onError={addDefaultSrc} alt={title} />
         </div>
         <div className="title-description-div">
           <p className="title"><b>{title || <Skeleton />}</b></p>
@@ -38,7 +43,7 @@ const ProductItem = ({
             </div>
             <div className="price">
               {(count * price).toFixed(2)} €
-          </div>
+            </div>
           </div>
         </div>
       </div>
