@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import ProductsList from '../../components/ProductsList';
+import './cart.scss'
 
 class Cart extends Component { 
 
@@ -11,8 +13,13 @@ class Cart extends Component {
       <div className="cart-page container">
         <ProductsList 
         products={cartItems}
-        totalPrice={totalPrice}
         />
+        <div className="buy-div text-right">
+          <p>{totalPrice.toFixed(2)} €</p>
+          <Link to='/shipping'>
+            <button>Buy</button>
+          </Link>
+        </div>
       </div>
     );
   }

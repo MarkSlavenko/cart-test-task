@@ -1,0 +1,25 @@
+.cart-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .buy-div {
+    width: 80%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+    p {
+      font-size: 1.5rem;
+    }
+
+    button {
+      width: 120px;
+      height: 40px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      font-weight: 300;
+      color: #717171;
+    }
+  }
+}

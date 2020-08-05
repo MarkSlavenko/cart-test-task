@@ -38,7 +38,7 @@ const productsExample = [
 
 export const initialState = {
   cartItems: productsExample,
-  totalPrice: 0, 
+  totalPrice: 999.99, 
 };
 
 export const Cart = (store = initialState, action) => {
