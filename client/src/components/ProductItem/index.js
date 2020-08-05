@@ -9,10 +9,9 @@ import './productItem.scss';
 const ProductItem = ({
   id, img, title, description, count, price, delFunc, changeCountFunc,
 }) => {
-
   let smallDescription = '';
   if (description) {
-    smallDescription = description.length >= 125 ? (description.slice(0, 125) + "...") : description;
+    smallDescription = description.length >= 125 ? `${description.slice(0, 125)}  ...` : description;
   }
 
   return (
@@ -31,11 +30,11 @@ const ProductItem = ({
             <div className="count">
               <span onClick={() => changeCountFunc('-')}>
                 —
-            </span>
+              </span>
               <input type="number" min="1" max="50" defaultValue={count} />
               <span onClick={() => changeCountFunc('+')}>
                 +
-            </span>
+              </span>
             </div>
             <div className="price">
               {(count * price).toFixed(2)} €
@@ -44,7 +43,7 @@ const ProductItem = ({
         </div>
       </div>
     </div>
-  )
+  );
 };
 
 ProductItem.propTypes = {
