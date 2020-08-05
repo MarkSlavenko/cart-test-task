@@ -19,7 +19,7 @@ const productsExample = [
     "et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea " +
     "commodo consequat.",
     count: 3,
-    price: 30.00,
+    price: 40.00,
   },
   {
     id: "sfwesr3453452677gfer",

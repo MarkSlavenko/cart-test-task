@@ -116,3 +116,146 @@
     }
   }
 }
+
+@media (max-width: 575.98px) {
+  .product-item {
+    width: 95%;
+    padding: 20px 10px;
+
+    .inner-div {
+      flex-wrap: wrap;
+
+      > div {
+        padding: 0px 5px;
+      }
+
+      .image-div {
+        width: 25%;
+
+        img {
+          width: 95px;
+          height: 95px;
+        }
+      }
+
+      .title-description-div {
+        width: 65%;
+        border-right: 0px;
+        padding-right: 0px;
+        align-items: center;
+        justify-content: center;
+
+        .description {
+          display: none;
+        }
+      }
+
+      .count-price-del-div {
+        flex-direction: row-reverse;
+        width: 100%;
+
+        .count-price-div {
+          margin-right: auto;
+          font-size: 1em;
+
+          .count {
+            span {
+              margin: 0px 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .product-item {
+    .inner-div {
+      flex-wrap: wrap;
+
+      .image-div {
+        width: 20%;
+
+        img {
+          height: 90px;
+        }
+      }
+
+      .title-description-div {
+        width: 72%;
+        border-right: 0px;
+        padding-right: 0px;
+
+      }
+
+      .count-price-del-div {
+        flex-direction: row-reverse;
+        width: 100%;
+
+        .count-price-div {
+          margin-right: auto;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .product-item {
+    .inner-div {
+      flex-wrap: wrap;
+
+      .image-div {
+        width: 20%;
+
+        img {
+          height: 120px;
+        }
+      }
+
+      .title-description-div {
+        width: 72%;
+        border-right: 0px;
+        padding-right: 0px;
+
+      }
+
+      .count-price-del-div {
+        flex-direction: row-reverse;
+        width: 100%;
+
+        .count-price-div {
+          margin-right: auto;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .product-item {
+    .inner-div {
+      .image-div {
+        width: 19%;
+      }
+
+      .title-description-div {
+        padding-right: 35px;
+        width: 47%;
+      }
+
+      .count-price-del-div {
+        width: 34%;
+
+        .count-price-div {
+          .count {
+            span {
+              margin: 0px 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
