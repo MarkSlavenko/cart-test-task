@@ -24,5 +24,15 @@ module.exports = {
     'rules': {
       'react/jsx-filename-extension': 0,
       'quote-props': 0,
+      'jsx-a11y/label-has-associated-control': [
+        'error',
+        {
+          'labelComponents': [],
+          'labelAttributes': [],
+          'controlComponents': [],
+          'assert': 'either',
+          'depth': 25
+        }
+      ],
     },
   };

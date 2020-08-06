@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import ShippingForm from '../../components/ShippingForm';
 
 class Shipping extends Component {
@@ -7,12 +8,23 @@ class Shipping extends Component {
   }
 
   render() {
+    const { totalPrice } = this.props;
+
     return (
       <div className="shipping-page container">
-        <ShippingForm />
+        <ShippingForm 
+          totalPrice={totalPrice}
+        />
       </div>
     );
   }
 }
 
-export default Shipping;
+const mapStateToProps = (store) => ({
+  totalPrice: store.cart.totalPrice,
+});
+
+export default connect(
+  mapStateToProps,
+  // mapDispatchToProps,
+)(Shipping);

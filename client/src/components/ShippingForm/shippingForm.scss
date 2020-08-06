@@ -38,6 +38,11 @@
           text-transform: uppercase;
           font-weight: 300;
           color: #717171;
+
+          &:disabled {
+            cursor: not-allowed;
+            color: #c7c7c7;
+          }
         }
       }
     }
