@@ -32,18 +32,22 @@ const ProductItem = ({
         <div className="count-price-del-div text-right">
           <p><FontAwesomeIcon onClick={() => delFunc(id)} icon={faTrashAlt} /></p>
           <div className="count-price-div">
-            <div className="count">
-              <span onClick={() => changeCountFunc('-')}>
-                —
-              </span>
-              <input type="number" min="1" max="50" defaultValue={count} />
-              <span onClick={() => changeCountFunc('+')}>
-                +
-              </span>
-            </div>
-            <div className="price">
-              {(count * price).toFixed(2)} €
-            </div>
+            { count ?
+              <>
+                <div className="count">
+                  <span onClick={() => changeCountFunc('-')}>
+                    —
+                  </span>
+                  <input type="number" min="1" max="50" defaultValue={count} />
+                  <span onClick={() => changeCountFunc('+')}>
+                    +
+                  </span>
+                </div>
+                <div className="price">
+                  {(count * price).toFixed(2)} €
+                </div>
+              </>
+            : <Skeleton />}
           </div>
         </div>
       </div>
