@@ -3,6 +3,7 @@ import { combineReducers } from 'redux';
 import {
   SET_CART_ITEMS,
   SET_TOTAL_PRICE,
+  SET_CART_IS_EMPTY,
 } from '../constants';
 
 const productsExample = [
@@ -38,6 +39,7 @@ const productsExample = [
 
 export const initialState = {
   cartItems: productsExample,
+  cartIsEmpty: false,
   totalPrice: 0.00, 
 };
 
@@ -51,7 +53,12 @@ export const Cart = (store = initialState, action) => {
     case SET_TOTAL_PRICE:
       return {
         ...store,
-        totalPrice: action.totalPrice,
+        totalPrice: action.price,
+      };
+    case SET_CART_IS_EMPTY:
+      return {
+        ...store,
+        cartIsEmpty: action.status,
       };
     default:
       return store;

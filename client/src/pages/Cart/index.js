@@ -4,9 +4,13 @@ import { Link } from 'react-router-dom';
 import ProductsList from '../../components/ProductsList';
 import './cart.scss';
 
+import {
+  loadCartItems
+} from '../../actions';
+
 class Cart extends Component {
   componentDidMount() {
-
+    this.props.loadCartItems();
   }
 
   render() {
@@ -35,7 +39,15 @@ const mapStateToProps = (store) => ({
   totalPrice: store.cart.totalPrice,
 });
 
+const mapDispatchToProps = (dispatch) => {
+  return ({
+    loadCartItems: () => {
+      dispatch(loadCartItems())
+    },
+  })
+}
+
 export default connect(
   mapStateToProps,
-  // mapDispatchToProps,
+  mapDispatchToProps,
 )(Cart);

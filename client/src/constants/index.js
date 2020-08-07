@@ -1,3 +1,4 @@
 
 export const SET_CART_ITEMS = 'SET_CART_ITEMS';
 export const SET_TOTAL_PRICE = 'SET_TOTAL_PRICE';
+export const SET_CART_IS_EMPTY = 'SET_CART_IS_EMPTY';
