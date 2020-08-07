@@ -81,6 +81,10 @@
         }
 
         .count {
+          -moz-user-select: none;
+          -khtml-user-select: none;
+          user-select: none;    
+
           > div {
             padding: 0px 10px;
           }

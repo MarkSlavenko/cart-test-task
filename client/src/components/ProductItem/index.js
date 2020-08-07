@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,13 +10,46 @@ import defaultImg from './images/img-error.JPG';
 const ProductItem = ({
   id, img = defaultImg, title, description, count, price, delItemFunc, changeCountFunc,
 }) => {
+  const [countForm, setCount] = useState(count);
+
+  useEffect(() => {
+    if (countForm === '') {
+      changeCountFunc(id, 0);
+    } else {
+      changeCountFunc(id, countForm);
+    }
+  }, [countForm]);
+
   let smallDescription = '';
   if (description) {
     smallDescription = description.length >= 125 ? `${description.slice(0, 125)}  ...` : description;
   }
 
-  const addDefaultSrc = (e) => {
-    e.target.src = defaultImg;
+  const addDefaultSrc = (event) => {
+    event.target.src = defaultImg;
+  };
+
+  const handleChangeCount = (event) => {
+    const currentCount = event.target.value;
+
+    if (currentCount === '') {
+      setCount(currentCount);
+    } else if (currentCount >= 0 && currentCount <= 50) {
+      setCount(parseInt(currentCount));
+    }
+  };
+
+  const handleControlsChangeCount = (controlsCount) => {
+    let tempCount = countForm;
+    if (tempCount === '') {
+      tempCount = 0;
+    }
+
+    if (controlsCount && ((tempCount + 1) <= 50)) {
+      setCount(tempCount + 1);
+    } else if (!controlsCount && ((tempCount - 1) >= 0)) {
+      setCount(tempCount - 1);
+    }
   };
 
   return (
@@ -32,14 +65,14 @@ const ProductItem = ({
         <div className="count-price-del-div text-right">
           <p><FontAwesomeIcon onClick={() => delItemFunc(id)} icon={faTrashAlt} /></p>
           <div className="count-price-div">
-            { count ?
+            { price ?
               <>
                 <div className="count">
-                  <span onClick={() => changeCountFunc('-')}>
+                  <span onClick={() => handleControlsChangeCount(false)}>
                     —
                   </span>
-                  <input type="number" min="1" max="50" defaultValue={count} />
-                  <span onClick={() => changeCountFunc('+')}>
+                  <input type="number" min="1" max="50" onChange={handleChangeCount} value={countForm} />
+                  <span onClick={() => handleControlsChangeCount(true)}>
                     +
                   </span>
                 </div>
@@ -47,7 +80,7 @@ const ProductItem = ({
                   {(count * price).toFixed(2)} €
                 </div>
               </>
-            : <Skeleton />}
+              : <Skeleton />}
           </div>
         </div>
       </div>

@@ -7,13 +7,13 @@ const ProductsList = ({ products, delItemFunc, changeCountFunc }) => {
   let productsForShow = [];
 
   if (products) {
-    productsForShow = products.map((product, index) => {
+    productsForShow = products.map((product) => {
       const {
         id, img, title, description, count, price,
       } = product;
       return (
         <ProductItem
-          key={`${index} ${id}`}
+          key={id}
           id={id}
           img={img}
           title={title}

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Skeleton from 'react-loading-skeleton';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ProductsList from '../../components/ProductsList';
@@ -6,7 +7,8 @@ import './cart.scss';
 
 import {
   loadCartItems,
-  deleteItemFromCart
+  deleteItemFromCart,
+  changeItemCount,
 } from '../../actions';
 
 class Cart extends Component {
@@ -15,17 +17,23 @@ class Cart extends Component {
   }
 
   render() {
-    const { cartItems, totalPrice, deleteItem } = this.props;
+    const {
+      cartItems,
+      totalPrice,
+      deleteItem,
+      changeCountFunc,
+    } = this.props;
 
     return (
       <div className="cart-page container">
         <ProductsList
           products={cartItems}
           delItemFunc={deleteItem}
+          changeCountFunc={changeCountFunc}
         />
         <div className="buy-div text-right">
           <p>
-            {totalPrice.toFixed(2)} €
+            {totalPrice ? `${totalPrice.toFixed(2)} €` : <Skeleton />}
           </p>
           <Link to="/shipping">
             <button>Buy</button>
@@ -46,7 +54,10 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(loadCartItems());
   },
   deleteItem: (id) => {
-    dispatch(deleteItemFromCart(id))
+    dispatch(deleteItemFromCart(id));
+  },
+  changeCountFunc: (id, count) => {
+    dispatch(changeItemCount(id, count));
   },
 });
 
