@@ -37,9 +37,20 @@ export const loadCartItems = () => {
       }
         else {
           dispatch(setCartItems(items));
+          dispatch(countTotalPrice());
         }
     } else {
       dispatch(setCartIsEmpty(true));
     }
   }
-}
+};
+
+const countTotalPrice = () => {
+  let totalPrice = 0;
+  return (dispatch, getState) => {
+    totalPrice = getState().cart.cartItems.reduce((total, item) => {
+      return total + (item.count * item.price)
+    }, 0)
+    dispatch(setTotalPrice(totalPrice));
+  }
+};
