@@ -48,4 +48,16 @@ const countTotalPrice = () => {
   };
 };
 
-// const changeCountForItem = (id, )
+export const deleteItemFromCart = (id) => {
+  return (dispatch, getState) => {
+    const cartItems = getState().cart.cartItems;
+    for (let i = 0; i < cartItems.length; i += 1) {
+      if (cartItems[i].id === id) {
+        cartItems.splice(i, 1);
+        break;
+      }
+    }
+    dispatch(setCartItems(cartItems));
+    dispatch(countTotalPrice());
+  };
+};

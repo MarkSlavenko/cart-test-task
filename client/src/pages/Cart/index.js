@@ -5,7 +5,8 @@ import ProductsList from '../../components/ProductsList';
 import './cart.scss';
 
 import {
-  loadCartItems
+  loadCartItems,
+  deleteItemFromCart
 } from '../../actions';
 
 class Cart extends Component {
@@ -14,12 +15,13 @@ class Cart extends Component {
   }
 
   render() {
-    const { cartItems, totalPrice } = this.props;
+    const { cartItems, totalPrice, deleteItem } = this.props;
 
     return (
       <div className="cart-page container">
         <ProductsList
           products={cartItems}
+          delItemFunc={deleteItem}
         />
         <div className="buy-div text-right">
           <p>
@@ -42,6 +44,9 @@ const mapStateToProps = (store) => ({
 const mapDispatchToProps = (dispatch) => ({
   loadCartItems: () => {
     dispatch(loadCartItems());
+  },
+  deleteItem: (id) => {
+    dispatch(deleteItemFromCart(id))
   },
 });
 

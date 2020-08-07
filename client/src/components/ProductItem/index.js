@@ -8,7 +8,7 @@ import './productItem.scss';
 import defaultImg from './images/img-error.JPG';
 
 const ProductItem = ({
-  id, img = defaultImg, title, description, count, price, delFunc, changeCountFunc,
+  id, img = defaultImg, title, description, count, price, delItemFunc, changeCountFunc,
 }) => {
   let smallDescription = '';
   if (description) {
@@ -30,7 +30,7 @@ const ProductItem = ({
           <p className="description">{smallDescription || <Skeleton count={3} />}</p>
         </div>
         <div className="count-price-del-div text-right">
-          <p><FontAwesomeIcon onClick={() => delFunc(id)} icon={faTrashAlt} /></p>
+          <p><FontAwesomeIcon onClick={() => delItemFunc(id)} icon={faTrashAlt} /></p>
           <div className="count-price-div">
             { count ?
               <>
@@ -62,7 +62,7 @@ ProductItem.propTypes = {
   description: PropTypes.string,
   count: PropTypes.number.isRequired,
   price: PropTypes.number.isRequired,
-  delFunc: PropTypes.func.isRequired,
+  delItemFunc: PropTypes.func.isRequired,
   changeCountFunc: PropTypes.func.isRequired,
 };
 

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './productList.scss';
 import ProductItem from '../ProductItem';
 
-const ProductsList = ({ products, delFunc, changeCountFunc }) => {
+const ProductsList = ({ products, delItemFunc, changeCountFunc }) => {
   let productsForShow = [];
 
   if (products) {
@@ -14,12 +14,13 @@ const ProductsList = ({ products, delFunc, changeCountFunc }) => {
       return (
         <ProductItem
           key={`${index} ${id}`}
+          id={id}
           img={img}
           title={title}
           description={description}
           count={count}
           price={price}
-          delFunc={delFunc}
+          delItemFunc={delItemFunc}
           changeCountFunc={changeCountFunc}
         />
       );
@@ -35,7 +36,7 @@ const ProductsList = ({ products, delFunc, changeCountFunc }) => {
 
 ProductsList.propTypes = {
   products: PropTypes.array.isRequired,
-  delFunc: PropTypes.func.isRequired,
+  delItemFunc: PropTypes.func.isRequired,
   changeCountFunc: PropTypes.func.isRequired,
 };
 
