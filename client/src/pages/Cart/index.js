@@ -24,23 +24,32 @@ class Cart extends Component {
       changeCountFunc,
     } = this.props;
 
-    return (
-      <div className="cart-page container">
-        <ProductsList
-          products={cartItems}
-          delItemFunc={deleteItem}
-          changeCountFunc={changeCountFunc}
-        />
-        <div className="buy-div text-right">
-          <p>
-            {totalPrice ? `${totalPrice.toFixed(2)} €` : <Skeleton />}
-          </p>
-          <Link to="/shipping">
-            <button>Buy</button>
-          </Link>
+    if (cartItems.length === 0) {
+      return (
+        <div className="cart-page container">
+          <h2>Cart is empty!</h2>
+          <a href="/cart"><button>Hard reset</button></a>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return (
+        <div className="cart-page container">
+          <ProductsList
+            products={cartItems}
+            delItemFunc={deleteItem}
+            changeCountFunc={changeCountFunc}
+          />
+          <div className="buy-div text-right">
+            <p>
+              {(totalPrice || totalPrice === 0) ? `${totalPrice.toFixed(2)} €` : <Skeleton />}
+            </p>
+            <Link to="/shipping">
+              <button>Buy</button>
+            </Link>
+          </div>
+        </div>
+      );
+    }
   }
 }
 
