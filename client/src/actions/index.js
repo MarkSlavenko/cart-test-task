@@ -1,31 +1,25 @@
 import {
   SET_CART_ITEMS,
   SET_TOTAL_PRICE,
-  SET_CART_IS_EMPTY
-} from '../constants/index.js';
+  SET_CART_IS_EMPTY,
+} from '../constants';
 
-import { getCartItems, } from '../api';
+import { getCartItems } from '../api';
 
-export const setCartItems = items => {
-  return ({
-    type: SET_CART_ITEMS,
-    items
-  })
-};
+export const setCartItems = (items) => ({
+  type: SET_CART_ITEMS,
+  items,
+});
 
-export const setTotalPrice = price => {
-  return ({
-    type: SET_TOTAL_PRICE,
-    price
-  })
-};
+export const setTotalPrice = (price) => ({
+  type: SET_TOTAL_PRICE,
+  price,
+});
 
-export const setCartIsEmpty = status => {
-  return ({
-    type: SET_CART_IS_EMPTY,
-    status
-  })
-};
+export const setCartIsEmpty = (status) => ({
+  type: SET_CART_IS_EMPTY,
+  status,
+});
 
 export const loadCartItems = () => {
   return async (dispatch) => {
@@ -34,23 +28,24 @@ export const loadCartItems = () => {
       const items = res.data.data;
       if (items.length === 0) {
         dispatch(setCartIsEmpty(true));
+      } else {
+        dispatch(setCartItems(items));
+        dispatch(countTotalPrice());
       }
-        else {
-          dispatch(setCartItems(items));
-          dispatch(countTotalPrice());
-        }
     } else {
       dispatch(setCartIsEmpty(true));
     }
-  }
+  };
 };
 
 const countTotalPrice = () => {
   let totalPrice = 0;
   return (dispatch, getState) => {
     totalPrice = getState().cart.cartItems.reduce((total, item) => {
-      return total + (item.count * item.price)
-    }, 0)
+      return total + (item.count * item.price);
+    }, 0);
     dispatch(setTotalPrice(totalPrice));
-  }
+  };
 };
+
+// const changeCountForItem = (id, )

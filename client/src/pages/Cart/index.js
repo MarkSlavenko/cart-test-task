@@ -39,13 +39,11 @@ const mapStateToProps = (store) => ({
   totalPrice: store.cart.totalPrice,
 });
 
-const mapDispatchToProps = (dispatch) => {
-  return ({
-    loadCartItems: () => {
-      dispatch(loadCartItems())
-    },
-  })
-}
+const mapDispatchToProps = (dispatch) => ({
+  loadCartItems: () => {
+    dispatch(loadCartItems());
+  },
+});
 
 export default connect(
   mapStateToProps,

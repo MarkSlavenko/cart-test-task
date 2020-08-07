@@ -12,7 +12,7 @@ class Shipping extends Component {
 
     return (
       <div className="shipping-page container">
-        <ShippingForm 
+        <ShippingForm
           totalPrice={totalPrice}
         />
       </div>
