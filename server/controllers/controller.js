@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-getCartItems = async (req, res) => {
+const getCartItems = (req, res) => {
   axios
   .get('https://5f2d3fed8085690016923038.mockapi.io/api/products')
   .then(response => res.status(200).json({ success: true, data: response.data }))

@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import ShippingForm from '../../components/ShippingForm';
+import ShippingForm from './components/ShippingForm';
 
 class Shipping extends Component {
-  componentDidMount() {
-
-  }
-
   render() {
     const { totalPrice } = this.props;
 
@@ -26,5 +22,4 @@ const mapStateToProps = (store) => ({
 
 export default connect(
   mapStateToProps,
-  // mapDispatchToProps,
 )(Shipping);

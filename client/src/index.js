@@ -5,7 +5,7 @@ import 'normalize.css';
 import { Provider } from 'react-redux';
 import App from './App';
 import './index.scss';
-import { store } from './store/configureStore';
+import { store } from './redux/store/configureStore';
 
 ReactDOM.render(
   <BrowserRouter>

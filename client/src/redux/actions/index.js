@@ -4,7 +4,7 @@ import {
   SET_CART_IS_EMPTY,
 } from '../constants';
 
-import { getCartItems } from '../api';
+import { getCartItems } from '../../api';
 
 export const setCartItems = (items) => ({
   type: SET_CART_ITEMS,

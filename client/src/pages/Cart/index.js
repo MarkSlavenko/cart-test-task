@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import ProductsList from '../../components/ProductsList';
+import ProductsList from './components/ProductsList';
 import './cart.scss';
 
 import {
   loadCartItems,
   deleteItemFromCart,
   changeItemCount,
-} from '../../actions';
+} from '../../redux/actions';
 
 class Cart extends Component {
   componentDidMount() {
